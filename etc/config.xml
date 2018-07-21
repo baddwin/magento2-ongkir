@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+	<default>
+        <carriers>
+            <ongkir>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+				<model>Amzone\Ongkir\Model\Carrier\Ongkir</model>
+                <name>Amzone Ongkir Shipping</name>
+                <price>0.00</price>
+                <title>Amzone Ongkir Shipping</title>
+               <specificerrmsg>Amzone Ongkir Shipping is not available for your area. Please contact us.</specificerrmsg>
+            </ongkir>
+            <!-- carrier-config -->
+        </carriers>
+    </default>
+</config>
