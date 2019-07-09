@@ -1,9 +1,7 @@
 <?php
-namespace Amzone\Ongkir\Model\Query;
+namespace FalahDev\Ongkir\Model\Query;
 
 use Magento\Framework\HTTP\ZendClientFactory;
-use Magento\Framework\App\Helper\Context;
-use Magento\Store\Model\ScopeInterface;
 
 class Api
 {
@@ -12,7 +10,8 @@ class Api
 
     protected $_httpClient;
 
-    public function __contstruct(ZendClientFactory $httpClient) {
+    public function __construct(ZendClientFactory $httpClient)
+    {
         $this->_httpClient = $httpClient;
     }
 
@@ -24,7 +23,7 @@ class Api
         $apiCaller->setHeaders([
             'Content-Type: application/x-www-form-urlencoded',
             'Accept: application/json',
-            'Key: '.$header
+            'Key: ' . $header,
         ]);
 
         $apiCaller->setParameterPost($param); //or parameter get
@@ -34,12 +33,12 @@ class Api
     public function getOngkir($origin, $destination, $weight, $courier)
     {
         $params = [
-            'origin' => $origin,
-            'originType' => 'city',
-            'destination' => $destination,
+            'origin'          => $origin,
+            'originType'      => 'city',
+            'destination'     => $destination,
             'destinationType' => 'city',
-            'weight' => $weight,
-            'courier' => $courier
+            'weight'          => $weight,
+            'courier'         => $courier,
         ];
         $key = 'xx';
 

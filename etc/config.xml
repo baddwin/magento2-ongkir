@@ -11,13 +11,12 @@
             <ongkir>
                 <active>1</active>
                 <sallowspecific>0</sallowspecific>
-				<model>Amzone\Ongkir\Model\Carrier\Ongkir</model>
-                <name>Amzone Ongkir Shipping</name>
+				<model>FalahDev\Ongkir\Model\Carrier\Ongkir</model>
+                <name>FalahDev Ongkir Shipping</name>
                 <price>0.00</price>
-                <title>Amzone Ongkir Shipping</title>
-               <specificerrmsg>Amzone Ongkir Shipping is not available for your area. Please contact us.</specificerrmsg>
+                <title>FalahDev Ongkir</title>
+               <specificerrmsg>FalahDev Ongkir Shipping is not available for your area. Please contact us.</specificerrmsg>
             </ongkir>
-            <!-- carrier-config -->
         </carriers>
     </default>
 </config>

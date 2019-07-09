@@ -1,12 +1,11 @@
 <?php
-namespace Amzone\Ongkir\Model\Carrier;
+namespace FalahDev\Ongkir\Model\Carrier;
 
-use Amzone\Ongkir\Model\Query\Api as ApiData;
+use FalahDev\Ongkir\Model\Query\Api as ApiData;
 use Magento\Quote\Model\Quote\Address\RateRequest;
-use Magento\Checkout\Model\Session as CartSession;
 
 class Ongkir extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
-    \Magento\Shipping\Model\Carrier\CarrierInterface
+\Magento\Shipping\Model\Carrier\CarrierInterface
 {
     /**
      * @var string
@@ -23,7 +22,6 @@ class Ongkir extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      * @var \Magento\Shipping\Model\Rate\ResultFactory
      */
     protected $_rateResultFactory;
-
 
     /**
      * @var \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory
@@ -51,8 +49,8 @@ class Ongkir extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     ) {
         $this->_rateResultFactory = $rateResultFactory;
         $this->_rateMethodFactory = $rateMethodFactory;
-        $this->_logger = $logger;
-        $this->_apiData = $apiData;
+        $this->_logger            = $logger;
+        $this->_apiData           = $apiData;
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
     }
 
@@ -70,7 +68,7 @@ class Ongkir extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
         $result = $this->_rateResultFactory->create();
 
         $method = $this->generateMethods('REG', 10000, 'JNE');
-		$result->append($method);
+        $result->append($method);
 
         return $result;
     }
@@ -80,18 +78,21 @@ class Ongkir extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      */
     public function getAllowedMethods()
     {
-        return [$this->_code=> $this->getConfigData('name')];
+        return [$this->_code => $this->getConfigData('name')];
     }
 
-    public function generateMethods($service, $price, $courier){
-        //
-		$method = $this->_rateMethodFactory->create();
-		$method->setCarrier($this->_code);
-		$method->setCarrierTitle($courier);
-		$method->setMethod($this->_code);
-		$method->setMethodTitle($service);
-		$method->setPrice($price);
-		$method->setCost($price);
+    /**
+     * @return \Magento\Quote\Model\Quote\Address\RateResult\Method
+     */
+    public function generateMethods($service, $price, $courier)
+    {
+        $method = $this->_rateMethodFactory->create();
+        $method->setCarrier($this->_code);
+        $method->setCarrierTitle($courier);
+        $method->setMethod($this->_code);
+        $method->setMethodTitle($service);
+        $method->setPrice($price);
+        $method->setCost($price);
         return $method;
     }
 }
